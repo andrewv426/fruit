@@ -1,0 +1,20 @@
+//Concatenation of Array
+
+class Solution {
+    public int[] getConcatenation(int[] nums) {
+        int [] ans = new int[2*nums.length]; //creates array 2 times the size of array nums
+        int j = 0;
+        for (int i = 0; i < ans.length; i++) { //for loop iterating through array ans
+        if (i <= nums.length-1) { //once int i has iterated through array nums, we want to reset array nums using a new variable j
+            ans[i] = nums[i];
+        }
+            else { 
+                ans[i] = nums[j]; //finish the second part of array ans as a duplicate of array nums
+                j++;
+           }
+        
+        
+    }
+        return ans;
+}
+}
