@@ -1,0 +1,25 @@
+/* Andrew Vong
+August 17, 2023
+CSA */
+//Calculator given a num inches to determine miles yards feet, etc. 
+public class Main
+{
+    public static void main(String[] args) {
+        int startinginches = 100000;
+        int num = startinginches;
+        int miles = num/63360;
+        num = 100000%63360;
+        int yards = num/36;
+        num = num%36;
+        int feet = num/12;
+        num = num%12;
+
+        System.out.println("Starting inches : " + startinginches);
+        System.out.println("Miles : " + miles);
+        System.out.println("Yards : " + yards);
+        System.out.println("Feet : " + feet);
+        System.out.println("Inches: " + num);
+          
+          
+    }
+}
