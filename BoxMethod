@@ -1,0 +1,49 @@
+/* Andrew Vong
+10/3/2023
+CSA 
+BoxMethod :D
+Algorithim: initially print String x for the top of the box. Then we want to use something similar to a pointer method where we simply print the character that is to 
+the right of the character that comes before it (increase index by one) . A similar concept is applied to the letter on the right of the box, where we simply print the 
+character to the left of the last letter of the String x (print index of the last character - index) . To dictate the spaces in between both letters it's simply the length
+of the string minus the two characters that we will print. We can use a for loop to print each space. 
+However, at the base of the box we want to create a end condition such that we simply print the characters that are supposed to be in the reversed string instead of spaces
+*/
+import java.util.Scanner;
+public class Main {
+    public static void boxMethod(String x) {
+        System.out.println(x); // Prints first line of the box
+        String currentCharacter = ""; //initialize an empty string
+        int space = x.length() - 2; //how many spaces should be printed (since there are two letters printed for each box, the # of spaces should be the number of letters - 2)
+        String spaces = " "; //initialize space string
+        for (int index = 1; index < x.length(); index++) { //iterate through each character starting at index 1 since 
+
+            if (index != x.length() - 1) { //checks if the index of the string has not reached the end (since once it reaches the end, we want to reverse the entire string instead of printing spaces)
+                currentCharacter = String.valueOf(x.charAt(index)); //sets the correct FIRST char for each line to a string
+                System.out.print(currentCharacter); //prints character as string
+                for (int b = 0; b < space; b++) { //for loop to print required spaces for each line
+                    System.out.print(" ");
+                }
+                currentCharacter = String.valueOf(x.charAt(x.length() - index - 1)); //sets correct LAST char for each line to a string
+                System.out.print(currentCharacter); //prints char as a string
+                System.out.println(); // prints new line so that the next letter goes on the next line
+            } else {
+                while (index >= 0) { //once it reaches the final index we want to reverse the entire string instead of printing spaces
+                    currentCharacter = String.valueOf(x.charAt(index)); //converts the char at the last index into a string
+                    System.out.print(currentCharacter); //prints the char
+                    index--; //minus index by one so we can print the characters backwards
+                    if (index < 0) { //once the index reaches -1, we want to exit out of all the loops 
+                        index = x.length(); //set index equal to the length of x since that is the condition specified in the outer for loop
+                        break; //break and exit while loop since the last reverse string is complete
+                    }
+                }
+            }
+
+        }
+    }
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        System.out.print("Enter a string: ");
+        String inputString = scanner.nextLine();
+        boxMethod(inputString);
+    }
+}
