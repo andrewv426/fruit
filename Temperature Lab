@@ -1,0 +1,38 @@
+/*
+Andrew Vong
+08/30/2023
+AP CSA
+*/
+import java.util.Scanner; //Allows for scanner class to exist
+public class Main {
+    public static void main(String[] args) {
+        Scanner in = new Scanner(System.in); //Creates a user input based off the below question
+        System.out.print("OK, mate, what's the temperature outside? ");
+        int temp = in.nextInt(); //Sets integer temp to the value inputted by the user
+        String sports = "Looks good for... ";
+        if (temp >= -20 && temp <= 110) { //Checks if temperature exists within a reasonable range
+            System.out.println(sports);
+            //Below if statements check temperature according to provided chart
+            if (temp >= 75) {
+                System.out.println("Swimming");
+            }
+            if (temp > 32 && temp <= 70) {
+                System.out.println("Soccer");
+            }
+            if (temp > 60 && temp <= 85) {
+                System.out.println("Tennis");
+
+            }
+            if (temp > 10 && temp <= 32) {
+                System.out.println("Skiing");
+
+            }
+            if (temp <= 10) {
+                System.out.println("Checkers");
+            }
+        } else { //If the user inputs a temperature that does not exist within range, the below line tells the user that there is an "error"
+            System.out.println("There exists no sports within the temperatures you have provided");
+        }
+    }
+
+}
