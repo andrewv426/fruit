@@ -1,0 +1,29 @@
+
+/*
+Andrew Vong
+Wang Comp Sci A 5th
+1/17/2024
+//idea is that given a num n, we return an array that counts continuously like an arithmetic series till n. Ex: given that n is 5, we return 1, 12, 123, 1234, 12345. 
+*/
+
+public class Main
+{
+    public static void main(String[] args) {
+        int [] printArrayOneUpToN = oneUpToN(6);
+        for (int indexf = 0; indexf < printArrayOneUpToN.length; indexf++) {
+         System.out.print(printArrayOneUpToN[indexf]);
+         }
+    }
+    public static int[] oneUpToN (int n) {
+        int [] arrayOneUpToN = new int[((n*(n+1))/2)]; //# of elements in array
+        int index = 0;
+        for (int count = 1; count <= n; count++) {  //tracks the count 
+            for (int numberToBeAdded = 1; numberToBeAdded <= count; numberToBeAdded++) { //tracks number to be added in array
+                arrayOneUpToN[index] = numberToBeAdded; 
+                index++;
+            }
+        }
+        return arrayOneUpToN;
+        
+    }
+}
