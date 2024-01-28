@@ -1,0 +1,41 @@
+/* 
+Andrew Vong
+//return an array that swaps the number adjacent to 5 with a 6, and then replaces all the 6 with the original number adjacent to 5
+*/
+
+public class Main {
+     public static void main(String[] args) {
+        int [] array56 = {1,5,4,6,3,7};
+        int [] fixed56 = fix56(array56);
+         for (int indexf = 0; indexf < fixed56.length; indexf++) {
+         System.out.print(fixed56[indexf]);
+         }
+         System.out.println();
+         int [] array57 = {5,4,6,5,3,7,6};
+         int[] fixed57 = fix56(array57);
+        for (int indexf = 0; indexf < fixed57.length; indexf++) {
+         System.out.print(fixed57[indexf]);
+    }
+    }
+    public static int[] fix56(int[] x) {
+    int [] modified56 = x; 
+     int store5 = -1;
+     int store6 = -1;
+     int storenum = -1;
+     for (int index = 0; index < x.length; index++) {
+         if (x[index] == 5) {
+             store5 = index;
+         }
+         else if (x[index] == 6) {
+             store6 = index;
+             storenum = x[store5 + 1];
+             x[store5+1] = 6;
+             modified56[store6] = storenum;
+         }
+     }
+     x = modified56;
+     return x;
+}
+}
+    
+
