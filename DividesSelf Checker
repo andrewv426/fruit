@@ -1,0 +1,36 @@
+
+/*
+Andrew Vong
+Wang 
+5th Period CSA
+11/30/2023
+*/
+//store the last digit of int by dividing number by modulus 10 then using that stored number check if it divides evenly by checking if the modulus = 0
+
+public class Main
+{
+    public static void main(String[] args) {
+        System.out.println(dividesSelf(128));
+        System.out.println(dividesSelf(12));
+        System.out.println(dividesSelf(120));
+    }
+    public static boolean dividesSelf(int n) {
+        int storeDigit;
+        int numOfDigits = 0;
+        int checkDigits = n;
+        while (checkDigits != 0) { //checks how many digits
+            checkDigits = checkDigits/10; 
+            numOfDigits++;
+        }
+        for (int a = 0; a < numOfDigits; a++) {
+             checkDigits = n; 
+            storeDigit = checkDigits%10;
+           if (((storeDigit == 0) || (checkDigits/storeDigit % 2) != 0)) {
+            return false;
+        }
+    }
+    return true;
+}
+}
+
+
