@@ -1,0 +1,54 @@
+/* Andrew Vong
+10/3/2023
+CSA 
+WithoutString 
+Algorithim: Search for "remove string" within a base subString that is equal length to the remove string starting at initialIndex 0. 
+Using the substring (initialIndex, initialIndex + scanLength) we iterate by moving one character to the right (using initialIndex++) of the original base string. 
+Once the modified substring equals the remove string we take the indices of the substring that comes before what we want to remove, and whatever comes after we want to 
+remove (aka "Hello There, llo" == "He" + " There"). Then we need to check if the remove case matches up more than once, so we reinitialize the index to 0, and restart but 
+this time with a modified string. If we reach the end and there is no longer a matching string, we exit the for loop. 
+In addition we must use conditional statments to avoid IndexOutOfBoundsException, such that we cant return (0,0) or (0, # that is greater than the length of the base string). 
+*/
+public class Main {
+    public static void withoutString(String base, String remove) {
+        int scanLength = remove.length();
+        String modified = "";
+        int endIndex = base.length() - 1;
+        for (int initialIndex = 0; initialIndex <= endIndex;) {
+            if (initialIndex + scanLength <= base.length()) {
+                modified = base.substring(initialIndex, initialIndex + scanLength);
+                if (modified.equalsIgnoreCase(remove)) {
+                    base = base.substring(0, initialIndex) + base.substring(initialIndex + scanLength);
+                    endIndex = base.length() - 1;
+                    initialIndex = 0;
+                } else {
+                    initialIndex++;
+                }
+            } else {
+                break;
+            }
+        }
+        System.out.println(base);
+    }
+    public static void main(String[] args) {
+        withoutString("Hello there", "llo"); // → "He there"
+        withoutString("Hello there", "e"); // → "Hllo thr"
+        withoutString("Hello there", "x"); // → "Hello there"
+        withoutString("This is a FISH", "IS"); // → "Th a FH"
+        withoutString("THIS is a FISH", "is"); // → "TH a FH"
+        withoutString("THIS is a FISH", "iS"); // → "TH a FH"
+        withoutString("abxxxxab", "xx"); // → "abab"
+        withoutString("abxxxab", "xx"); // → "abxab"
+        withoutString("abxxxab", "x"); // → "abab"
+        withoutString("xxx", "x"); // → ""
+        withoutString("xxx", "xx"); // → "x"
+        withoutString("xyzzy", "Y"); // → "xzz"
+        withoutString("", "x"); // → ""
+        withoutString("abcabc", "b"); // → "acac"
+        withoutString("AA22bb", "2"); // → "AAbb"
+        withoutString("MkjtMkx", "Mk"); // → "jtx"
+        withoutString("Hi HoHo", "Ho"); // → "Hi "
+        withoutString("1111", "1"); // → ""
+        withoutString("1111", "11"); // → ""
+    }
+}
