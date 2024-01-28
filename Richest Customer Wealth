@@ -1,0 +1,31 @@
+class Solution {
+    public int maximumWealth(int[][] accounts) {
+        
+        int WealthSum = 0;
+        for(int i = 0; i < accounts.length; i++) {
+           int WealthSum2 = 0; 
+            for (int j = 0; j < accounts[i].length; j++) {
+
+            WealthSum2 += accounts[i][j];
+   
+            }
+            
+            if(WealthSum2 > WealthSum) {
+            WealthSum = WealthSum2;
+            
+            }
+            
+        }
+       return WealthSum;
+    }
+    
+}
+    
+
+
+
+
+
+//Add together the values of each indexed account
+//Check which account is greatest
+//return the value of the account thath has the greatest $$$
