@@ -1,0 +1,27 @@
+
+/*
+Andrew Vong
+Sort an array from L -> G (ascending order)
+*/
+
+public class Main
+{
+    public static void main(String[] args) {
+        int swapped = 0;
+        int cycles = 0;
+    int [] list = {55, 3, 26, 4, 8, 123, 7};
+    while (cycles < list.length) {
+    for (int index = 0; index < list.length-1; index++) {
+        if (list[index+1] < list[index]) {
+            swapped = list[index+1];
+            list[index+1] = list[index];
+            list[index] = swapped;
+        }
+    }
+    cycles++;
+    }
+    for (int index = 0; index < list.length; index++) {
+        System.out.println(list[index]);
+    }
+}
+}
