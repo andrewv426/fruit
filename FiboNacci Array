@@ -1,22 +1,15 @@
-
-/*
-Andrew Vong
-fiboNacci Arrays ; return an array based on the fibonacci sequence
-*/
-
-public class Main
-{
-    public static void main(String[] args) {
-        long [] fiboNacci = new long[50];
-        fiboNacci [0] = 1;
-        fiboNacci [1] = 1;
-    
-        for (int index = 2; index < 50; index++) {
+class Solution {
+    public int fib(int n) {
+        int [] fiboNacci = new int[n+1];
+        fiboNacci [0] = 0;
+        if (n > 0) {
+             fiboNacci [1] = 1;
+        }
+        for (int index = 2; index < n+1; index++) {
             fiboNacci [index] = fiboNacci[index-1] + fiboNacci[index-2];
         }
-        //subtract one to the input bc indexes start 1. 
-        System.out.print(fiboNacci[46]);
-        
+       
+        return fiboNacci[n];
         
     }
 }
