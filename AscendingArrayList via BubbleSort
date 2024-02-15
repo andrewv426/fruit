@@ -1,0 +1,38 @@
+/*
+Andrew Vong
+Sort an array from L -> G (ascending order)
+*/
+
+public class Main
+{
+    public static void main(String[] args) {
+        // Initialize variables
+        int swapped = 0;
+        int cycles = 0;
+
+        // Initialize the array to be sorted
+        int[] list = {55, 3, 26, 4, 8, 123, 7};
+
+        // Outer loop to iterate through each cycle
+        while (cycles < list.length) {
+            // Inner loop to perform the bubble sort
+            for (int index = 0; index < list.length - 1; index++) {
+                // Check if the adjacent elements need to be swapped
+                if (list[index + 1] < list[index]) {
+                    // Swap the elements
+                    swapped = list[index + 1];
+                    list[index + 1] = list[index];
+                    list[index] = swapped;
+                }
+            }
+
+            // Increment the cycle count
+            cycles++;
+        }
+
+        // Print the sorted array
+        for (int index = 0; index < list.length; index++) {
+            System.out.println(list[index]);
+        }
+    }
+}
