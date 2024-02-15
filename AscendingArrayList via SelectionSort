@@ -1,0 +1,26 @@
+
+/*
+//selection sort method
+*/
+import java.util.Arrays;
+public class Main
+{
+    public static void main(String[] args) {
+         int[] list = {67, 23, 12, 54, 35, 18};
+         int trackMinIndex = 0; 
+         int swap = 0;
+         for (int index = 0; index < list.length; index++) { //outer for loop tracks the element that we are trying to sort (1st element, 2nd element, etc.)
+             trackMinIndex = index; //reinitialize index
+             for(int j = index; j < list.length; j++) { //iterates through array elements not sorted to find where the minimum value in the unsorted part of the array is located, j = index bc we only want to check the minimum values that have not been sorted
+                 if(list[j] < list[trackMinIndex]) {
+                     trackMinIndex = j; //store where our min value is
+                 }
+             }
+            swap = list[index]; //set a temp variable to hold where we're swapping
+            list[index] = list[trackMinIndex]; //swap minimum value to where its supposed to be
+            list[trackMinIndex] = swap; //swap the other value to where our min value used to be
+            System.out.println(Arrays.toString(list));
+}
+    }
+    
+}
