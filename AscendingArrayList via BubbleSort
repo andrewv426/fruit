@@ -11,7 +11,7 @@ public class Main
         int cycles = 0;
 
         // Initialize the array to be sorted
-        int[] list = {55, 3, 26, 4, 8, 123, 7};
+        int[] list = {2, 8, 5, 3, 9, 4, 1};
 
         // Outer loop to iterate through each cycle
         while (cycles < list.length) {
@@ -25,14 +25,16 @@ public class Main
                     list[index] = swapped;
                 }
             }
+            for (int index = 0; index < list.length; index++) {
+            System.out.print(list[index]);
+        }
+        System.out.println();
 
             // Increment the cycle count
             cycles++;
         }
 
         // Print the sorted array
-        for (int index = 0; index < list.length; index++) {
-            System.out.println(list[index]);
-        }
+        
     }
 }
