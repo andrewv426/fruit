@@ -1,0 +1,25 @@
+/*
+Insertion Sort Method 
+Andrew Vong
+*/
+import java.util.Arrays;
+public class Main
+{
+    public static void main(String[] args) {
+        int[] list = {67, 23, 12, 54, 35, 18};
+        for (int index = 1; index < list.length; index++) { 
+        //this manages the element we're currently on/the end of the subArray we're looking at (the card(s) being drawn)
+            for (int currentElem = 0; currentElem < index; currentElem++) { 
+                //this manages the element we're comparing with our last element in the subarray
+                if (list[index] < list[currentElem]) { 
+                    //swapping
+                    int temp = list[index];
+                    list[index] = list[currentElem];
+                    list[currentElem] = temp;
+                }
+            }
+         System.out.println(Arrays.toString(list));
+    }
+   
+}
+}
