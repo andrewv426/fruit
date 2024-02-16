@@ -2,37 +2,38 @@
 Andrew Vong
 Sort an array from L -> G (ascending order)
 */
-
+import java.util.Arrays;
 public class Main
 {
     public static void main(String[] args) {
         // Initialize variables
-        int swapped = 0;
         int cycles = 0;
+        boolean didItSwap;
 
         // Initialize the array to be sorted
         int[] list = {2, 8, 5, 3, 9, 4, 1};
-
         // Outer loop to iterate through each cycle
-        while (cycles < list.length) {
+        do {
+            didItSwap = false;
             // Inner loop to perform the bubble sort
             for (int index = 0; index < list.length - 1; index++) {
                 // Check if the adjacent elements need to be swapped
                 if (list[index + 1] < list[index]) {
                     // Swap the elements
-                    swapped = list[index + 1];
+                    int swapped = list[index + 1];
                     list[index + 1] = list[index];
                     list[index] = swapped;
+                    didItSwap = true;
                 }
             }
-            for (int index = 0; index < list.length; index++) {
-            System.out.print(list[index]);
-        }
-        System.out.println();
+            if(!didItSwap) {
+                break;
+            }
+            System.out.println(Arrays.toString(list));
 
             // Increment the cycle count
             cycles++;
-        }
+        } while (cycles < list.length);
 
         // Print the sorted array
         
