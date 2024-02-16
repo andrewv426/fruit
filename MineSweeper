@@ -1,0 +1,86 @@
+import java.util.Scanner;
+Andrew Vong
+public class Main
+{
+    public static void main(String[] args) {
+       System.out.println("How many rows would you like?");
+       Scanner question = new Scanner(System.in);
+       int rows = question.nextInt();
+       System.out.println("How many columns would you like?");
+       int columns = question.nextInt();
+       
+       int numMines = 0;
+       int numAdjacent = 0;
+       String[][] landmines = new String[rows+2][columns+2];
+       
+       //creates empty grid
+       for (int i = 0; i < landmines.length; i++) {
+            for (int z = 0; z < landmines[i].length; z++) {
+                landmines[i][z] = "";
+            }
+        }
+ 
+       
+       //reiterate the grid and keep placing mines until there are rows amount of mines
+        while (numMines < rows){
+            if (numMines < rows){
+                for (int i = 1; i < landmines.length-1; i++){
+                    for (int z = 1; z < landmines[i].length-1; z++){
+                        if (!landmines[i][z].equals("m")){
+                            double random = Math.random();
+                            if (random < (double)1/(rows*columns) && numMines < rows){
+                            landmines[i][z] = "m";
+                            numMines++;
+                            }
+                        }
+                    }
+                }
+            }
+       }
+
+       
+       //places the numbers
+       for (int i = 1; i < landmines.length-1; i++){
+           for (int z = 1; z < landmines[i].length-1; z++){
+               if (landmines[i][z].equals("")){
+                   if (landmines[i-1][z-1].equals("m")){
+                       numAdjacent++;
+                   }
+                   if(landmines[i-1][z].equals("m")){
+                       numAdjacent++;
+                   }
+                   if (landmines[i-1][z+1].equals("m")){
+                       numAdjacent++;
+                   }
+                   if(landmines[i][z-1].equals("m")){
+                       numAdjacent++;
+                   }
+                   if(landmines[i][z+1].equals("m")){
+                       numAdjacent++;
+                   }
+                   if(landmines[i+1][z-1].equals("m")){
+                       numAdjacent++;
+                   }
+                   if(landmines[i+1][z].equals("m")){
+                       numAdjacent++;
+                   }
+                   if(landmines[i+1][z+1].equals("m")){
+                       numAdjacent++;
+                   }
+                   landmines[i][z] = Integer.toString(numAdjacent);
+                   numAdjacent = 0;
+               }
+            }
+        }
+        
+        //prints out the grid
+        for (int i = 1; i < landmines.length; i++){
+            for (int z = 1; z < landmines[i].length; z++){
+                System.out.print(landmines[i][z] + "\t");
+            }
+            System.out.println();
+        }
+    }
+
+       
+}
